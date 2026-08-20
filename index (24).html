@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>英語教材ナビ</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap topbar">
+    <div class="brand-row">
+      <div class="brand">英語教材ナビ</div>
+      <div class="brand-note" id="datanote"></div>
+    </div>
+    <nav class="tabs">
+      <button class="tab is-on" data-view="home">明日の授業</button>
+      <button class="tab" data-view="search">教材を探す</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- ════════════ 明日の授業 ════════════ -->
+  <section id="view-home">
+
+    <section class="hero">
+      <div class="shapes" aria-hidden="true">
+        <div class="sh sh-ring-a" data-speed="-0.42" data-spin="0.09" data-z="-0.5" data-rx="0.12"></div>
+        <div class="sh sh-sq-a"   data-speed="0.3"  data-spin="-0.16" data-base="20" data-z="0.7" data-ry="0.2"></div>
+        <div class="sh sh-dot-a"  data-speed="-0.72" data-z="1.1"></div>
+        <div class="sh sh-dot-b"  data-speed="0.6" data-z="-0.8"></div>
+        <div class="sh sh-ring-b" data-speed="-0.24" data-spin="0.12" data-z="0.6" data-rx="-0.14"></div>
+        <div class="sh sh-line"   data-speed="0.34" data-ry="0.3"></div>
+        <div class="sh sh-sq-b"   data-speed="-0.5" data-spin="0.22" data-base="10" data-z="0.9" data-rx="0.18"></div>
+        <div class="sh sh-sq-c"   data-speed="0.46" data-spin="-0.2" data-z="-1.1" data-ry="-0.24"></div>
+        <div class="sh sh-ring-c" data-speed="-0.34" data-z="0.5" data-rx="0.1"></div>
+      </div>
+
+      <div class="hero-inner">
+      <div class="hero-msg" id="hero-msg">
+        <div class="hero-layer is-on">
+          <p class="eyebrow">明日の授業</p>
+          <h1 class="hero-title">どの教材を、<br>どこで使う？</h1>
+          <p class="lead">学年・単元・レッスンを選ぶだけ。その範囲の教材だけを、そのまま一覧にします。</p>
+        </div>
+        <div class="hero-layer" aria-hidden="true">
+          <p class="eyebrow"></p>
+          <h1 class="hero-title"></h1>
+          <p class="lead"></p>
+        </div>
+      </div>
+
+      <div class="menus" id="home-menus"></div>
+
+      <div class="hero-cta">
+        <button class="btn btn-primary btn-lg" id="h-go">この範囲の教材を見る</button>
+        <span class="hero-count"><b id="h-count">0</b> 件が該当</span>
+      </div>
+      </div>
+    </section>
+
+    <section class="band">
+      <div class="shapes" aria-hidden="true">
+        <div class="sh sh-r-a" data-rel="1" data-speed="-0.3" data-spin="0.14"></div>
+        <div class="sh sh-r-b" data-rel="1" data-speed="0.26"></div>
+        <div class="sh sh-r-c" data-rel="1" data-speed="-0.5"></div>
+        <div class="sh sh-r-d" data-rel="1" data-speed="0.4" data-spin="-0.18" data-base="15"></div>
+      </div>
+      <div class="band-inner">
+        <h2>残り時間から選ぶ</h2>
+        <p>授業の空き時間に合う長さの教材だけを表示します。</p>
+        <div class="chips">
+          <button class="chip" data-quick="10分以内">10分以内</button>
+          <button class="chip" data-quick="25分以内">25分以内</button>
+          <button class="chip" data-quick="40分以上">40分以上</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="panels">
+      <div class="panel">
+        <h2>最近使った教材</h2>
+        <ul class="minilist" id="recent-list"></ul>
+      </div>
+      <div class="panel">
+        <h2>お気に入り</h2>
+        <ul class="minilist" id="fav-list"></ul>
+      </div>
+    </section>
+
+  </section>
+
+  <!-- ════════════ 教材を探す ════════════ -->
+  <section id="view-search" hidden>
+    <div class="search-wrap">
+
+      <div class="shapes" aria-hidden="true">
+        <div class="sh sh-s-a" data-rel="1" data-speed="-0.5" data-spin="0.1"></div>
+        <div class="sh sh-s-b" data-rel="1" data-speed="0.42" data-spin="-0.14" data-base="8"></div>
+        <div class="sh sh-s-c" data-rel="1" data-speed="-0.8"></div>
+        <div class="sh sh-s-d" data-rel="1" data-speed="0.5"></div>
+        <div class="sh sh-s-e" data-rel="1" data-speed="-0.44" data-spin="0.18" data-base="12"></div>
+      </div>
+
+      <h1 class="page-title">教材を探す</h1>
+
+      <section class="searchbox">
+        <div class="searchrow">
+          <input type="search" id="q" placeholder="教材名・ねらい・語彙・文法">
+          <button class="btn btn-ghost" id="toggle-filters" aria-expanded="false">絞り込み ＋</button>
+          <button class="btn btn-ghost" id="only-fav">★お気に入りだけ</button>
+        </div>
+
+        <div class="filters" id="filters" hidden></div>
+
+        <div class="statusbar">
+          <span class="count"><b id="count">0</b> 件</span>
+          <div class="pills" id="pills"></div>
+          <button class="btn btn-ghost btn-sm" id="clear">すべてクリア</button>
+        </div>
+      </section>
+
+      <div id="results"></div>
+
+      <footer class="foot">
+        <p id="datafoot"></p>
+        <p>お気に入りと履歴はこの端末の中だけに保存されます。外部へは送信しません。</p>
+      </footer>
+    </div>
+  </section>
+
+</main>
+
+<div class="toast" id="toast" role="status"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
